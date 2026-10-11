@@ -31,3 +31,12 @@ coverage/
 # Temporary files
 *.tmp
 *.temp
+
+.grok/
+
+
+# Generated deployment files
+.vercel/
+
+# Grok workspace files
+.grok/
