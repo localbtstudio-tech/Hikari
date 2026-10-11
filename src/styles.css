@@ -1,0 +1,112 @@
+@import "tailwindcss";
+@import "@fontsource/fraunces/latin-500.css";
+@import "@fontsource/fraunces/latin-600.css";
+@import "@fontsource/fraunces/latin-600-italic.css";
+@import "@fontsource/outfit/latin-400.css";
+@import "@fontsource/outfit/latin-500.css";
+@import "@fontsource/outfit/latin-600.css";
+
+@theme {
+  --color-ink: #141820;
+  --color-ink-soft: #232a3b;
+  --color-paper: #f3ece1;
+  --color-paper-dim: #cfc6b8;
+  --color-mist: #9aa1b2;
+  --color-gold: #e4a84b;
+  --color-gold-soft: #f3d7a4;
+  --color-seal: #c94b3a;
+  --font-display: "Fraunces", "Iowan Old Style", Palatino, Georgia, serif;
+  --font-sans: "Outfit", "Avenir Next", "Segoe UI", sans-serif;
+  --radius-card: 1.25rem;
+}
+
+@layer base {
+  html {
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    height: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    background: var(--color-ink);
+    color: var(--color-paper);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  button:focus-visible,
+  [role="button"]:focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+  }
+}
+
+.stage-frame {
+  width: min(100vw, calc(100dvh * 420 / 760));
+  height: min(100dvh, calc(100vw * 760 / 420));
+  max-height: 100dvh;
+  container-type: size;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.title-fit {
+  font-size: 3.25rem;
+  line-height: 0.95;
+}
+
+@container (max-height: 560px) {
+  .title-fit {
+    font-size: 2.25rem;
+  }
+
+  .compact-hide {
+    display: none;
+  }
+}
+
+.scrim-bottom {
+  background: linear-gradient(
+    to top,
+    var(--color-ink) 10%,
+    color-mix(in srgb, var(--color-ink) 86%, transparent) 48%,
+    transparent 78%
+  );
+}
+
+.scrim-top {
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--color-ink) 72%, transparent),
+    transparent 70%
+  );
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rise-in {
+  animation: rise-in 520ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise-in {
+    animation: none;
+  }
+}
